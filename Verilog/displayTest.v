@@ -38,12 +38,10 @@ module displayTest (
 // 29-bit counter, clocked at 5 MHz, overflows every 107 seconds (approx).
     reg [28:0] testCount;      // 29-bit counter
     always @ (posedge clk5)
-        begin
-            if (rstInt)
-                testCount <= 29'b0;
-            else
-                testCount <= testCount + 1'b1;
-        end
+        if (rstInt)
+            testCount <= 29'b0;
+        else
+            testCount <= testCount + 1'b1;
     
 // Take selected bits from the counter to build the value to be displayed, using
 // overlapping groups of bits from the counter for each hexadecimal digit.
